@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Toolbar setting overriding the default toolbar
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayShowCustomEnabled(true)
 
+        //Main RecyclerView to hold the child RecyclerView
         recyclerView = findViewById(R.id.recycler_view_item)
         linearLayoutManager =
             LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
@@ -34,12 +36,12 @@ class MainActivity : AppCompatActivity() {
         recyclerView?.setHasFixedSize(true)
 
         initData()
-        myAdapters = MainAdapter(applicationContext, sectionList!!) //myAdapters(applicationContext, AchItem!!)
+        myAdapters = MainAdapter(applicationContext, sectionList!!) //Passing the data to be displayed in the main and child RecyclerView
         recyclerView?.adapter = myAdapters
 
     }
 
-    fun reload() {
+    private fun reload() {
         Toast.makeText(
             applicationContext, "Reload",
             Toast.LENGTH_SHORT
@@ -56,17 +58,17 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.nav_menu, menu)
         return true
     }
-
+    //Menu Selection Action
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.nav_option -> reload()
         }
         return super.onOptionsItemSelected(item)
     }
-    /********************NEW*****************/
 
     var sectionList: ArrayList<Section> = ArrayList()
 
+    //Mock data to be populated from DB in prod
     private fun initData(): ArrayList<Section>{
 
         var sectionOneName="Personal Records"

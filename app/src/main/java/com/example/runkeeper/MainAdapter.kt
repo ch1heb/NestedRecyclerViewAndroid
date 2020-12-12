@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainAdapter(private var applicationContext: Context, sectionList: ArrayList<Section>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
-    private var AchItem: ArrayList<AchItem>? = null
+
+    private var achItem: ArrayList<AchItem>? = null
+    //Child Adapter
     private var myAdapters: BadgeAdapter? = null
     private var gridLayoutManager: GridLayoutManager? = null
 
@@ -46,18 +48,19 @@ class MainAdapter(private var applicationContext: Context, sectionList: ArrayLis
         var subTitle: String? = section.sectionCount
         var items: ArrayList<AchItem> = section.sectionItems
 
+        //Setting the child RecyclerView layout Config
         gridLayoutManager =
             GridLayoutManager(applicationContext, 2, LinearLayoutManager.VERTICAL, false)
         holder.childRecyclerView.layoutManager = gridLayoutManager
         holder.childRecyclerView.setHasFixedSize(true)
 
-        AchItem = ArrayList()
-        AchItem =items
-        myAdapters = BadgeAdapter(applicationContext, AchItem!!)
+        achItem = ArrayList()
+        achItem =items
+        myAdapters = BadgeAdapter(applicationContext, achItem!!)
         holder.childRecyclerView.adapter= myAdapters
 
-        holder.sectionName.setText(sectionName)
-        holder.subTitle.setText(subTitle)
+        holder.sectionName.text = sectionName
+        holder.subTitle.text = subTitle
 
     }
 

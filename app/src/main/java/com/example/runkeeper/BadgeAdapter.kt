@@ -25,22 +25,22 @@ class BadgeAdapter(var context: Context, var arrayList: ArrayList<AchItem>) :
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
 
-        val AchItem: AchItem = arrayList.get(position)
+        val achItem: AchItem = arrayList.get(position)
 
-        holder.icons.setImageResource(AchItem.icons!!)
-        holder.titles.text = AchItem.Achtype
-        holder.record.text = AchItem.record
+        holder.icons?.setImageResource(achItem.icons!!)
+        holder.titles?.text = achItem.Achtype
+        holder.record?.text = achItem.record
 
         holder.itemView.setOnClickListener{
-            Toast.makeText(context, AchItem.Achtype, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, achItem.Achtype, Toast.LENGTH_LONG).show()
         }
     }
 
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var icons = itemView.findViewById<ImageView>(R.id.imageView)
-        var titles = itemView.findViewById<TextView>(R.id.textView)
-        var record = itemView.findViewById<TextView>(R.id.record)
+        var icons: ImageView? = itemView.findViewById<ImageView>(R.id.imageView)
+        var titles: TextView? = itemView.findViewById<TextView>(R.id.textView)
+        var record: TextView? = itemView.findViewById<TextView>(R.id.record)
     }
 
 
