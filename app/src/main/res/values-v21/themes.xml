@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="OverflowMenu" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Required for pre-Lollipop. -->
+        <item name="actionOverflowButtonStyle">@color/white</item>
+        <item name="actionOverflowMenuStyle">@color/white</item>
+        <item name="android:actionOverflowButtonStyle">@color/white</item>
+        <item name="android:actionOverflowMenuStyle">@color/white</item>
+
+
+    </style>
+</resources>
